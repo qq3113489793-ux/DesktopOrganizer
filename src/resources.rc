@@ -1,0 +1,35 @@
+#pragma code_page(65001)
+
+#include "resource.h"
+
+1 24 "app.manifest"
+
+IDI_DESKTOP_ORGANIZER ICON "../assets/app-icon.ico"
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0x0L
+FILEOS 0x40004L
+FILETYPE 0x1L
+FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "DesktopOrganizer"
+            VALUE "FileDescription", "桌面收纳"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "DesktopOrganizer"
+            VALUE "OriginalFilename", "DesktopOrganizer.exe"
+            VALUE "ProductName", "桌面收纳 Desktop Organizer"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END

@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "freeMoveMigrated": true,
+  "globalStyle": {"opacity": 45, "blur": 0, "cornerRadius": 24, "tintMode": 3, "tintColor": 15790320, "textColor": 16120058, "showTitle": true, "showBorder": true, "centerExpandedGroups": false},
+  "containers": [
+    {
+      "id": "ctrl-snap-test",
+      "name": "Ctrl Snap Test",
+      "x": 180,
+      "y": 180,
+      "columns": 2,
+      "rows": 2,
+      "halfColumn": false,
+      "halfRow": false,
+      "iconSize": 1,
+      "opacity": 45,
+      "blur": 0,
+      "cornerRadius": 24,
+      "tintMode": 3,
+      "tintColor": 15790320,
+      "textColor": 16120058,
+      "showTitle": true,
+      "showBorder": true,
+      "locked": false,
+      "collapsed": false,
+      "followGlobalStyle": true,
+      "snapToGrid": true,
+      "pushIcons": false,
+      "monitor": "",
+      "items": []
+    }
+  ]
+}

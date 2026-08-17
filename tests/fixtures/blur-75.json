@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "freeMoveMigrated": true,
+  "globalStyle": {"opacity": 45, "blur": 75, "cornerRadius": 36, "tintMode": 3, "tintColor": 15790320, "textColor": 16120058, "showTitle": true, "showBorder": true},
+  "containers": [{
+    "id": "blur-test", "name": "模糊测试 75%", "x": 180, "y": 180,
+    "columns": 4, "rows": 3, "halfColumn": false, "halfRow": false,
+    "iconSize": 1, "opacity": 45, "blur": 75, "cornerRadius": 36,
+    "tintMode": 3, "tintColor": 15790320, "textColor": 16120058,
+    "showTitle": true, "showBorder": true, "locked": false, "collapsed": false,
+    "followGlobalStyle": true, "snapToGrid": false, "pushIcons": false,
+    "monitor": "", "items": []
+  }]
+}

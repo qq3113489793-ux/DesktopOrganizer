@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "freeMoveMigrated": true,
+  "globalStyle": {"opacity": 45, "blur": 0, "cornerRadius": 24, "tintMode": 3, "tintColor": 15790320, "textColor": 16120058, "showTitle": true, "showBorder": true, "centerExpandedGroups": false},
+  "containers": [
+    {
+      "id": "align-anchor", "name": "Anchor", "x": 320, "y": 220,
+      "columns": 2, "rows": 2, "halfColumn": false, "halfRow": false,
+      "opacity": 45, "blur": 0, "cornerRadius": 24, "tintMode": 3,
+      "tintColor": 15790320, "textColor": 16120058,
+      "showTitle": true, "showBorder": true, "locked": false,
+      "collapsed": false, "followGlobalStyle": true, "snapToGrid": false,
+      "pushIcons": false, "monitor": "", "items": []
+    },
+    {
+      "id": "align-moved", "name": "Moved", "x": 560, "y": 460,
+      "columns": 2, "rows": 2, "halfColumn": false, "halfRow": false,
+      "opacity": 45, "blur": 0, "cornerRadius": 24, "tintMode": 3,
+      "tintColor": 15790320, "textColor": 16120058,
+      "showTitle": true, "showBorder": true, "locked": false,
+      "collapsed": false, "followGlobalStyle": true, "snapToGrid": false,
+      "pushIcons": false, "monitor": "", "items": []
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "freeMoveMigrated": true,
+  "globalStyle": {"opacity": 45, "blur": 0, "cornerRadius": 36, "tintMode": 3, "tintColor": 15790320, "textColor": 16120058, "showTitle": true, "showBorder": true, "centerExpandedGroups": false},
+  "containers": [
+    {
+      "id": "ui-motion-test",
+      "name": "UI 动作测试",
+      "x": 180, "y": 180,
+      "columns": 3, "rows": 2,
+      "halfColumn": false, "halfRow": false,
+      "iconSize": 1,
+      "opacity": 45, "blur": 0,
+      "cornerRadius": 36,
+      "tintMode": 3,
+      "tintColor": 15790320,
+      "textColor": 16120058,
+      "showTitle": true,
+      "showBorder": true,
+      "locked": false,
+      "collapsed": false,
+      "centeredExpansionActive": false,
+      "collapsedHomeX": 180, "collapsedHomeY": 180,
+      "followGlobalStyle": true,
+      "snapToGrid": false,
+      "pushIcons": false,
+      "monitor": "\\\\.\\DISPLAY1",
+      "items": [
+        {"path": "Z:\\missing-a.exe", "name": "缩小后仍需显示的文件夹名称", "iconSize": 0, "gridX": 2, "gridY": 0},
+        {"path": "Z:\\missing-b.exe", "name": "B", "iconSize": 0, "gridX": 3, "gridY": 0},
+        {"path": "Z:\\missing-c.exe", "name": "C", "iconSize": 0, "gridX": 4, "gridY": 0},
+        {"path": "Z:\\missing-d.exe", "name": "D", "iconSize": 0, "gridX": 5, "gridY": 0}
+      ]
+    }
+  ]
+}
