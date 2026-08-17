@@ -10,7 +10,9 @@
 namespace diagnostic_log {
 namespace {
 
-constexpr unsigned long long kMaximumLogBytes = 2ull * 1024ull * 1024ull;
+// Two 5 MiB generations keep total log use near 10 MiB. On rotation the old
+// previous generation is replaced, so the directory cannot grow forever.
+constexpr unsigned long long kMaximumLogBytes = 5ull * 1024ull * 1024ull;
 
 std::mutex& LogMutex() {
     static std::mutex mutex;
@@ -18,6 +20,13 @@ std::mutex& LogMutex() {
 }
 
 std::filesystem::path ResolvePath() {
+    wchar_t overridePath[32768]{};
+    const DWORD overrideLength = GetEnvironmentVariableW(
+        L"DESKTOP_ORGANIZER_LOG", overridePath,
+        static_cast<DWORD>(std::size(overridePath)));
+    if (overrideLength > 0 && overrideLength < std::size(overridePath))
+        return std::filesystem::path(overridePath);
+
     PWSTR localAppData = nullptr;
     if (FAILED(SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_CREATE, nullptr,
                                     &localAppData)) || !localAppData) return {};

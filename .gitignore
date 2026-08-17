@@ -2,6 +2,7 @@
 /build-*/
 /.vs/
 /out/
+/dist/
 /CMakeUserPresets.json
 *.obj
 *.pdb

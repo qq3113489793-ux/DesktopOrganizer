@@ -2,6 +2,7 @@
 #include "desktop_anchor.h"
 #include "desktop_grid_geometry.h"
 #include "desktop_item_policy.h"
+#include "diagnostic_log.h"
 #include "icon_image.h"
 #include "interaction_motion.h"
 #include "layout.h"
@@ -11,6 +12,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 #include <thread>
 
 #define CHECK(expression)                                                               \
@@ -160,6 +162,36 @@ int main() {
     const auto configPath = testDirectory / L"config.json";
     std::error_code error;
     std::filesystem::remove_all(testDirectory, error);
+    error.clear();
+    std::filesystem::create_directories(testDirectory, error);
+    CHECK(!error);
+
+    // The logger keeps one active and one previous 5 MiB generation. Reaching
+    // the limit must replace the oldest generation instead of growing forever.
+    const auto logPath = testDirectory / L"DesktopOrganizer.log";
+    const auto previousLogPath = testDirectory / L"DesktopOrganizer.previous.log";
+    constexpr std::streamoff kLogGenerationBytes = 5ll * 1024ll * 1024ll;
+    {
+        std::ofstream active(logPath, std::ios::binary | std::ios::trunc);
+        active.seekp(kLogGenerationBytes - 1);
+        active.put('\0');
+    }
+    {
+        std::ofstream previous(previousLogPath, std::ios::binary | std::ios::trunc);
+        previous << "oldest generation";
+    }
+    CHECK(SetEnvironmentVariableW(L"DESKTOP_ORGANIZER_LOG", logPath.c_str()));
+    diagnostic_log::Write(L"rotation.test", L"latest entry");
+    CHECK(std::filesystem::file_size(previousLogPath) ==
+          static_cast<uintmax_t>(kLogGenerationBytes));
+    CHECK(std::filesystem::file_size(logPath) < 4096);
+    {
+        std::ifstream active(logPath, std::ios::binary);
+        const std::string text((std::istreambuf_iterator<char>(active)),
+                               std::istreambuf_iterator<char>());
+        CHECK(text.find("rotation.test") != std::string::npos);
+        CHECK(text.find("latest entry") != std::string::npos);
+    }
 
     const auto anchorRoot = testDirectory / L"Desktop";
     std::filesystem::create_directories(anchorRoot, error);

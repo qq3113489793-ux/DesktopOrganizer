@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.24)
 project(DesktopOrganizer LANGUAGES CXX RC)
 
+# Link the MSVC C/C++ runtime into every binary so the release runs on a clean
+# Windows installation without the separate Visual C++ Redistributable.
+if(MSVC)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+
 add_executable(DesktopOrganizer WIN32
     src/main.cpp
     src/config.cpp
@@ -44,7 +50,12 @@ install(TARGETS DesktopOrganizer RUNTIME DESTINATION .)
 
 include(CTest)
 if(BUILD_TESTING)
-    add_executable(DesktopOrganizerTests tests/tests.cpp src/config.cpp src/desktop_anchor.cpp)
+    add_executable(DesktopOrganizerTests
+        tests/tests.cpp
+        src/config.cpp
+        src/diagnostic_log.cpp
+        src/desktop_anchor.cpp
+    )
     target_compile_features(DesktopOrganizerTests PRIVATE cxx_std_20)
     target_compile_definitions(DesktopOrganizerTests PRIVATE UNICODE _UNICODE WIN32_LEAN_AND_MEAN NOMINMAX)
     target_include_directories(DesktopOrganizerTests PRIVATE src)

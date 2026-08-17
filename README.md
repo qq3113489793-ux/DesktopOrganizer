@@ -56,10 +56,16 @@ cmake --build build --config Release
 
 生成文件位于 `build/Release/DesktopOrganizer.exe`。配置保存在 `%LOCALAPPDATA%/DesktopOrganizer/config.json`。
 
+MSVC 的 C/C++ 运行库会静态链接进 EXE；Release 中的便携版不需要另行安装
+Microsoft Visual C++ Redistributable。程序仍要求 Windows 10 或 Windows 11，
+使用的 Direct3D、DWM 和 Shell 组件均为系统自带组件。
+
 ## 调试日志
 
 程序会把启动、分组移动/缩放、图标拖入/移出、打开、解散、外观修改和配置保存错误记录到：
 
 `%LOCALAPPDATA%/DesktopOrganizer/logs/DesktopOrganizer.log`
 
-日志只记录操作结果和路径，不记录每一帧鼠标移动；写入失败不会中断用户操作。单个日志超过 2 MB 后会轮换为 `DesktopOrganizer.previous.log`。
+日志只记录操作结果和路径，不记录每一帧鼠标移动；写入失败不会中断用户操作。
+当前日志达到 5 MB 后会轮换为 `DesktopOrganizer.previous.log`，旧的上一代日志会被覆盖，
+两个文件合计最多约 10 MB。
